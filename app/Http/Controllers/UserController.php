@@ -27,12 +27,16 @@ class UserController extends Controller
 
     public function login(Request $request) {
 
-        $credentials = $request->validate([
+        $data = $request->all();
+
+        $request->validate([
             'username' => ['required', 'string'], 
             'password' => ['required', 'string']
         ]);
 
-        if (Auth::attempt($credentials)) {
+        $type = filter_var($request->username, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        if (Auth::attempt(array($type => $data['username'], 'password' => $data['password']))) {
             $request->session()->regenerate();
             return Redirect::route('home.index');
         } else {
@@ -45,7 +49,7 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         Auth::logout();
-        
+
         return Redirect::route('main');
     }
 }
