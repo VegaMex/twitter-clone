@@ -14,6 +14,7 @@
             <input id="password" type="password" v-model="form.password" />
             <div v-if="errors.password">{{ errors.password }}</div>
             <button type="submit">Registrar</button>
+            <div v-if="errors.registerFail">{{ errors.registerFail[0] }}</div>
         </form>
     </div>
 </template>

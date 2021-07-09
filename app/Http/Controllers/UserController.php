@@ -22,7 +22,11 @@ class UserController extends Controller
             ])
         );
 
-        return Redirect::route('home.index');
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+            return Redirect::route('home.index');
+        } else {
+            return redirect()->back()->withErrors('Algo salió mal', 'registerFail');
+        }
     }
 
     public function login(Request $request) {
