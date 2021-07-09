@@ -17,9 +17,10 @@ use Inertia\Inertia;
 |
 */
 
-Route::inertia('/', 'MainPage');
+Route::inertia('/', 'MainPage')
+    ->name('main');
 
-// Login
+// Login y logout
 
 Route::get('/login', function () { return Inertia::Render('Login', []); })
     ->name('login')
@@ -27,11 +28,11 @@ Route::get('/login', function () { return Inertia::Render('Login', []); })
 
 Route::post('/login', [UserController::class, 'login']);
 
+Route::post('/logout', [UserController::class, 'logout']);
+
 // Register
 
-Route::get('/register', function () {
-    return Inertia::Render('Register', []);
-});
+Route::get('/register', function () { return Inertia::Render('Register', []); });
 
 Route::post('/register', [UserController::class, 'store'])
     ->name('user.store');

@@ -39,4 +39,13 @@ class UserController extends Controller
             return redirect()->back()->withErrors('Las credenciales no son válidas', 'loginFail');
         }
     }
+
+    public function logout(Request $request) {
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        Auth::logout();
+        
+        return Redirect::route('main');
+    }
 }
