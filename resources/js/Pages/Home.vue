@@ -1,21 +1,24 @@
-<template lang="">
-    <div>
-        Página principal del home
-        <form @submit.prevent="submit">
-            <inertia-link href="/logout" method="post">Logout</inertia-link>
-        </form>
+<template>
+    <div class="wrap">
+        <left-bar :name="this.userInfo[0].name" :username="this.userInfo[0].username"></left-bar>
         <activity :tweetList="this.tweets"></activity>
+        <right-bar></right-bar>
     </div>
 </template>
 <script>
+import LeftBar from './LeftBar.vue'
 import Activity from './Activity.vue'
+import RightBar from './RightBar.vue'
 
 export default {
     components: {
+        'left-bar': LeftBar,
         'activity': Activity,
+        'right-bar': RightBar
     },
     props: {
-        tweets: Object
+        tweets: Object,
+        userInfo: Object
     },
 }
 </script>

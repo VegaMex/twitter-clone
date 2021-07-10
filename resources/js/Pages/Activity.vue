@@ -1,9 +1,14 @@
-<template lang="">
-    <div>
+<template>
+    <div class="activity-container">
+        <div class="activity-header">
+            <h2>Inicio</h2>
+        </div>
         <tweet-box></tweet-box>
-        <li v-for="tweet in tweetList" :key="tweet.id">
-            <tweet :tweet="tweet"></tweet>
-        </li>
+        <div class="tweets-container">
+            <div class="tweets" v-for="tweet in tweetList.slice().reverse()" :key="tweet.id">
+                <tweet :tweet="tweet"></tweet>
+            </div>
+        </div>
     </div>
 </template>
 <script>

@@ -22,7 +22,8 @@ class HomeController extends Controller
                     'message' => $x->message,
                     'date' => $x->created_at,
                 ];
-            })
+            }),
+            'userInfo' => User::where('id', Auth::user()->id)->get(['name', 'username'])
         ]);
     }
 
