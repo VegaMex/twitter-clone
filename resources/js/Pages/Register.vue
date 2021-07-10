@@ -39,8 +39,6 @@ export default {
             Inertia.post('/register', form)
         }
 
-        //console.log(form);
-
         return { form, submit }
     },
 }

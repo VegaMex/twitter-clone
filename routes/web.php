@@ -42,3 +42,6 @@ Route::post('/register', [UserController::class, 'store'])
 Route::get('/home', [HomeController::class, 'index'])
     ->name('home.index')
     ->middleware('auth');
+
+Route::post('/home', [HomeController::class, 'store'])
+    ->name('home.store');
