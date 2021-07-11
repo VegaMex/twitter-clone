@@ -24,6 +24,7 @@ export default {
 
         function submit() {
             Inertia.post('/home', form)
+            this.form.message = ""
         }
 
         return { form, submit }

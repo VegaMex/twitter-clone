@@ -18186,6 +18186,7 @@ __webpack_require__.r(__webpack_exports__);
 
     function submit() {
       _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.post('/home', form);
+      this.form.message = "";
     }
 
     return {
