@@ -29,10 +29,10 @@ class UserController extends Controller
         }
     }
 
-    public function login(Request $request) {
-
+    public function login(Request $request)
+    {
         $data = $request->all();
-
+        
         $request->validate([
             'username' => ['required', 'string'], 
             'password' => ['required', 'string']
@@ -48,7 +48,8 @@ class UserController extends Controller
         }
     }
 
-    public function logout(Request $request) {
+    public function logout(Request $request)
+    {
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
